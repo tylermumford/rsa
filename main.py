@@ -34,16 +34,16 @@ def load_key_files():
 
     private_key = tuple([int(line.strip()) for line in private_file])
     public_key = tuple([int(line.strip()) for line in public_file])
-    
+
     private_file.close()
     public_file.close()
 
     assert int(public_key[1]) > 0
     return private_key, public_key
 
-# 
+#
 # Main program logic
-# 
+#
 
 choice = choose()
 while choice != "Q":

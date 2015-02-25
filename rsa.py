@@ -57,9 +57,9 @@ def is_prime(x, certainty=DEFAULT_CERTAINTY):
             # log.debug("is_prime:CONFIRMED COMPOSITE:" + str(x))
             # log.debug("is_prime:CONFIRMED COMPOSITE BY:" + str(test))
             return False
-    
+
     log.debug("is_prime:PROBABLE PRIME:" + str(x))
-    return True 
+    return True
 
 assert is_prime(13)
 assert not is_prime(221)
@@ -75,11 +75,11 @@ def large_prime():
 
     while not is_prime(large_number) and large_number < 10**150:
         large_number += 2
-    
+
     if large_number > 10**150:
         # Try again.
         large_number = large_prime()
-    
+
     return large_number
 
 def phi_of(key_primes):
@@ -127,7 +127,7 @@ def generate_keys(passphrase=None):
 
     Each key is a tuple of (exp, mod).
     """
-    log.info("generate_keys:Using seed \"{}\"".format(passphrase))
+    log.info("generate_keys:Using seed \"%s\"", (passphrase))
     rand.seed(passphrase)
 
     key_primes = (large_prime(), large_prime())
@@ -194,7 +194,7 @@ def encrypt(plaintext, key):
 def decrypt(ciphertext, key):
     """Returns the corresponding plaintext as a string."""
     log.debug("decrypt:Decrypting ciphertext:{}...".format(ciphertext[:10]))
-    
+
     # Break text into blocks by BLOCK_DIGITS
     blocks = []
     for i, each_block in enumerate(ciphertext[::BLOCK_DIGITS]):
